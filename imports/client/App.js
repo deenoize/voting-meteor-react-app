@@ -35,11 +35,10 @@ class App extends Component {
       return <div>Loading...</div>
     }
     return (
-      <div>
-        <button onClick={this.showAll.bind(this)}>
-          Show {this.props.showAll ? 'One' : 'All'}
-        </button>
         <main>
+          <button onClick={this.showAll.bind(this)}>
+            Show {this.props.showAll ? 'One' : 'All'}
+          </button>
           <form className='new-items' onSubmit={this.addItems.bind(this)}>
             <input type='text' ref='itemOne'/>
             <input type='text' ref='itemTwo'/>
@@ -49,7 +48,6 @@ class App extends Component {
             return <Item item={item} key={item._id}/>
           })}
         </main>
-      </div>
     );
   }
 }

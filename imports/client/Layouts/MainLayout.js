@@ -1,11 +1,15 @@
 import React from 'react';
 import { LoginButtons } from 'meteor/okgrow:accounts-ui-react';
+import { Link } from 'react-router-dom';
 
 const MainLayout = ({children}) =>
     <div className='main-layout'>
       <header>
-        <h1>Level UP Voting</h1>
+        <h1><Link to='/'>Level UP Voting</Link></h1>
         <LoginButtons />
+        <nav>
+          <Link to='/about'>About</Link>
+        </nav>
       </header>
       {children}
     </div>

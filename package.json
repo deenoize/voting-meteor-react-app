@@ -12,6 +12,7 @@
     "react-addons-pure-render-mixin": "^15.6.0",
     "react-dom": "^15.6.1",
     "react-komposer": "^2.0.0",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "simpl-schema": "^0.3.1"
   }
 }
