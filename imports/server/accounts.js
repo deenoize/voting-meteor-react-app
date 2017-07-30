@@ -1,5 +1,5 @@
 Accounts.onCreateUser((options, user) => {
-  if(options.email === 'deenoize@admin.com') {
+  if(Meteor.settings.admins.indexOf(options.email) > -1 ) {
     user.roles = ['admin'];
   }
   user.hair = 'brown';
