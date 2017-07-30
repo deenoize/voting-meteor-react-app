@@ -36,11 +36,16 @@ class App extends Component {
     if (!this.props.ready) {
       return <div>Loading...</div>
     }
+
+    const showAll = Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+      <button onClick={this.showAll}>
+        Show {this.props.showAll ? 'One' : 'All'}
+      </button>
+    ) : null;
+
     return (
         <main>
-          <button onClick={this.showAll}>
-            Show {this.props.showAll ? 'One' : 'All'}
-          </button>
+          {showAll}
           <form className='new-items' onSubmit={this.addItems}>
             <input type='text' ref='itemOne'/>
             <input type='text' ref='itemTwo'/>
@@ -60,7 +65,7 @@ export default createContainer(() => {
   let showAll = Session.get('showAll');
   return {
     showAll,
-    ready: itemsSub.ready(),
+    ready: itemsSub.ready() && userSub.ready(),
     items: Items.find({}, {
       limit: showAll ? 50 : 1,
       sort: { lastUpdated: 1 }
