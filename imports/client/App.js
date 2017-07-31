@@ -30,7 +30,6 @@ class App extends Component {
     } else {
       Session.set('showAll', true);
     }
-
   }
 
   render() {
@@ -38,13 +37,16 @@ class App extends Component {
       return <div>Loading...</div>
     }
 
+    const test = true;
     return (
         <main>
-          <IsRole role='admin'>
+          <IsRole role='admin' { ... this.props}>
             <button onClick={this.showAll}>
               Show {this.props.showAll ? 'One' : 'All'}
             </button>
           </IsRole>
+          { test && <div>I'm inline conditional</div> }
+          { test ? <div>I'm another inline conditional</div> : null }
           <form className='new-items' onSubmit={this.addItems}>
             <input type='text' ref='itemOne'/>
             <input type='text' ref='itemTwo'/>
